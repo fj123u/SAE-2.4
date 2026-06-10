@@ -63,3 +63,17 @@ class Scenes {
         return $stmt->fetchAll();
     }
 }
+
+function getAllScene($pdo)
+{
+    $sql = "SELECT * FROM scene ORDER BY idScene DESC";
+    $stmt = $pdo->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getNameScene($pdo, $id)
+{
+    $stmt = $pdo->prepare("SELECT nomScene FROM Scene WHERE idScene = :idScene;");
+    $stmt->execute([':idScene' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}

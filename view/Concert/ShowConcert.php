@@ -14,12 +14,12 @@
         <th>Supprimer</th>
     </tr>
     <?php foreach ($concerts as $concert) {
-        $idArtiste = $concert["idArtiste"];
-        $idScene = $concert["idScene"];
+        $artiste = getNameArtiste($pdo, $concert["idArtiste"])["nom"];
+        $scene = getNameScene($pdo, $concert["idScene"])["nomScene"];
         $date = $concert["date"];
         $id = $concert["idConcert"];
         $hDebut = $concert["heureDebut"];
         $hFin = $concert["heureFin"];
-        echo ("<tr><th>" . $id . "</th><th>" . $idArtiste . "</th><th>" . $idScene . "</th><th>" . $date . "</th><th>" . $hDebut . "</th><th>" . $hFin . "</th><th>" . "<a href='index.php?page=concerts&action=modify&id=" . $id . "'>Modifier</a></th><th>" . "<a href='index.php?page=concerts&action=delete&id=" . $id . "'>Supprimer</a></th></tr>");
+        echo ("<tr><th>" . $id . "</th><th>" . $artiste . "</th><th>" . $scene . "</th><th>" . $date . "</th><th>" . $hDebut . "</th><th>" . $hFin . "</th><th>" . "<a href='index.php?page=concerts&action=modify&id=" . $id . "'>Modifier</a></th><th>" . "<a href='index.php?page=concerts&action=delete&id=" . $id . "'>Supprimer</a></th></tr>");
     } ?>
 </table>

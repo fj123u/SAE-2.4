@@ -7,7 +7,7 @@
 <form method="post" action="index.php?page=concerts&action=create">
     <div>
         <label for="artiste">Artiste</label>
-        <select id="idArtiste" name="idArtiste" required>
+        <select id="artiste" name="artiste" required>
             <option value="">Sélectionner un artiste</option>
             <?php foreach ($artistes as $artiste): ?>
                 <option value="<?= $artiste['idArtiste'] ?>" <?= (isset($_POST['idArtiste']) && $_POST['idArtiste'] == $artiste['idArtiste']) ? 'selected' : '' ?>>
@@ -18,7 +18,7 @@
     </div>
     <div>
         <label for="scene">Scene</label>
-        <select id="idScene" name="idScene" required>
+        <select id="scene" name="scene" required>
         <option value="">Sélectionner une scène</option>
             <?php foreach ($scenes as $scene): ?>
                 <option value="<?= $scene['idScene'] ?>" <?= (isset($_POST['idScene']) && $_POST['idScene'] == $scene['idScene']) ? 'selected' : '' ?>>

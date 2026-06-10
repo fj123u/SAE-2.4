@@ -18,4 +18,11 @@ function deleteArtiste($pdo, $id)
     $stmt->execute([':idArtiste' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function getNameArtiste($pdo, $id)
+{
+    $stmt = $pdo->prepare("SELECT nom FROM Artiste WHERE idArtiste = :idArtiste;");
+    $stmt->execute([':idArtiste' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 ?>

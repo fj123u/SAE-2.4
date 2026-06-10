@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../model/Artiste.php';
 require_once __DIR__ . '/../model/Concert.php';
+require_once __DIR__ . '/../model/Scene.php';
 function showConcertList($pdo)
 {
     $concerts = getAllConcert($pdo);
@@ -8,7 +9,7 @@ function showConcertList($pdo)
     include __DIR__ . '/../view/Concert/ShowConcert.php';
     include __DIR__ . '/../view/layout/footer.php';
 }
-function showConcertForm()
+function showConcertForm($pdo)
 {
     $concerts = getAllConcert($pdo);
     $artistes = getAllArtiste($pdo);

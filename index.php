@@ -20,9 +20,3 @@ switch ($page) {
         $action = 'index';
         break;
 }
-
-if (method_exists($controller, $action)) {
-    $controller->$action();
-} else {
-    $controller->index();
-}

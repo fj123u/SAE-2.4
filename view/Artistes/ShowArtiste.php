@@ -3,6 +3,7 @@
 ?>
 <html>
 <h1>Tous les Artistes</h1>
+<a href="index.php?page=artistes&action=create">Ajouter</a>
 <table>
     <tr>
         <th>Id</th>

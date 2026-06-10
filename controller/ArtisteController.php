@@ -14,4 +14,15 @@ function removeArtiste($pdo, $id)
     header('Location: index.php?page=artistes&action=index');
 }
 
+function createArtiste($pdo)
+{
+    include __DIR__ . '/../view/layout/header.php';
+    include __DIR__ . '/../view/Artistes/CreateArtiste.php';
+    include __DIR__ . '/../view/layout/footer.php';
+    // $nom = trim($_POST['nom']);
+    // $style = trim($_POST['style']);
+    // $pays = trim($_POST['pays']);
+    // ajouterArtiste($pdo, $nom, $style, $pays);
+}
+
 ?>

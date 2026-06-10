@@ -7,11 +7,9 @@ $action = $_GET['action'] ?? 'index';
 switch ($page) {
     case 'artistes':
         require_once 'controller/ArtistesController.php';
-        $controller = new ArtistesController();
         break;
     case 'scenes':
         require_once 'controller/ScenesController.php';
-        $controller = new ScenesController();
         break;
     case 'concerts':
         require_once 'controller/ConcertController.php';

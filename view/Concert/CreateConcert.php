@@ -1,17 +1,6 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
 <h1>Ajouter un concert</h1>
-
-<?php if (!empty($errors)): ?>
-    <div class="alert alert-danger">
-        <ul>
-            <?php foreach ($errors as $err): ?>
-                <li><?= htmlspecialchars($err) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
-
 <form method="POST" action="index.php?page=concerts&action=create">
     <div class="form-group">
         <label for="idArtiste">Artiste</label>

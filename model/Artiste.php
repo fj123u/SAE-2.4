@@ -22,8 +22,11 @@ function deleteArtiste($pdo, $id)
 function ajouterArtiste($pdo, $nom, $style, $pays)
 {
     $stmt = $pdo->prepare("INSERT INTO Artiste (nom, styleMusical, pays) VALUES (:nom, :styleMusical, :pays);");
-    $stmt->bindParam(":nom", $date);
-    $stmt->bindParam(":styleMusical", $hDebut);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":styleMusical", $style);
+    $stmt->bindParam(":pays", $pays);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function getNameArtiste($pdo, $id)

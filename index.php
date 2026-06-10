@@ -16,6 +16,15 @@ switch ($page) {
             case 'delete':
                 removeArtiste($pdo, $id);
                 break;
+            case 'create':
+                createArtiste($pdo);
+                break;  
+            case 'add':
+                addArtiste($pdo);
+                break;
+            case 'edit':
+                editArtiste($pdo, $id);
+                break;
         }
         break;
     case 'scenes':
@@ -28,14 +37,17 @@ switch ($page) {
             case 'list':
                 showConcertList($pdo);
                 break;
+            case 'create':
+                showConcertList($pdo);
+                break;
             case 'add':
                 showConcertForm($pdo);
                 break;
-            case 'create':
-                saveConcert($pdo);
+            case 'edit':
+                showConcertList($pdo);
                 break;
             case 'modify':
-                showModifyConcertForm($pdo, $id);
+                showConcertList($pdo);
                 break;
             case 'delete':
                 removeConcert($pdo, $id);

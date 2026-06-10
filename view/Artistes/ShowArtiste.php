@@ -10,7 +10,7 @@
         <th>Nom</th>
         <th>Style Musical</th>
         <th>Pays d'origine</th>
-        <th>Ajouter</th>
+        <th>Modifier</th>
         <th>Supprimer</th>
     </tr>
     <?php foreach ($artistes as $artiste) {
@@ -18,7 +18,7 @@
         $nom = $artiste["nom"];
         $style = $artiste["styleMusical"];
         $pays = $artiste["pays"];
-        echo ("<tr><th>" . $idArtiste . "</th><th>" . $nom . "</th><th>" . $style . "</th><th>" . $pays . "</th><th>" . "<a href='index.php?action=modify&id=" . $idArtiste . "'>Modifier</a></th><th>" . "<a href='index.php?page=artistes&action=delete&id=" . $idArtiste . "'>Supprimer</a></th></tr>");
+        echo ("<tr><th>" . $idArtiste . "</th><th>" . $nom . "</th><th>" . $style . "</th><th>" . $pays . "</th><th>" . "<a href='index.php?page=artistes&action=edit&id=" . $idArtiste . "'>Modifier</a></th><th>" . "<a href='index.php?page=artistes&action=delete&id=" . $idArtiste . "'>Supprimer</a></th></tr>");
     } ?>
 </table>    
 <html>

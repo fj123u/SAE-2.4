@@ -1,18 +1,5 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
-
 <h1>Modifier le concert</h1>
-
-<?php if (!empty($errors)): ?>
-    <div class="alert alert-danger">
-        <ul>
-            <?php foreach ($errors as $err): ?>
-                <li><?= htmlspecialchars($err) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
-
-<form method="POST" action="index.php?page=concerts&action=edit&id=<?= $concert['idConcert'] ?>">
+<form method="POST" action="index.php?page=concerts&action=modify&id=<?= $concert['idConcert'] ?>">
     <div class="form-group">
         <label for="idArtiste">Artiste</label>
         <select id="idArtiste" name="idArtiste" required>
@@ -48,5 +35,3 @@
     <button type="submit" class="btn btn-success">Enregistrer</button>
     <a href="index.php?page=concerts&action=index" class="btn btn-primary">Annuler</a>
 </form>
-
-<?php require __DIR__ . '/../layout/footer.php'; ?>

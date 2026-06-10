@@ -3,6 +3,7 @@ require_once 'config/database.php';
 
 $page = $_GET['page'] ?? 'dashboard';
 $action = $_GET['action'] ?? 'index';
+$id = $_GET['id'] ?? '';
 
 switch ($page) {
     case 'artistes':
@@ -22,6 +23,21 @@ switch ($page) {
         {
             case 'list':
                 showConcertList($pdo);
+                break;
+            case 'create':
+                showConcertList($pdo);
+                break;
+            case 'add':
+                showConcertForm($pdo);
+                break;
+            case 'edit':
+                showConcertList($pdo);
+                break;
+            case 'modify':
+                showConcertList($pdo);
+                break;
+            case 'delete':
+                removeConcert($pdo, $id);
                 break;
         }
         break;

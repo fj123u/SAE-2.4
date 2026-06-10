@@ -32,8 +32,8 @@ function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
 
 function deleteConcert($pdo, $id)
 {
-    $stmt = $pdo->prepare("DELETE FROM Assiste WHERE id = :id; DELETE FROM concert WHERE id = :id");
-    $stmt->bindParam(":id", $id);
+    $stmt = $pdo->prepare("DELETE FROM Assiste WHERE idConcert = :idConcert; DELETE FROM concert WHERE idConcert = :idConcert");
+    $stmt->bindParam(":idConcert", $id);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }

@@ -47,7 +47,7 @@ function updateConcert($pdo)
 function removeConcert($pdo, $id)
 {
     deleteConcert($pdo, $id);
-    header('Location: index.php?page=concert&action=list');
+    header('Location: index.php?page=concerts&action=list');
     exit();
 }
 ?>

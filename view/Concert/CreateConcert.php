@@ -1,7 +1,5 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
-
 <h1>Ajouter un concert</h1>
-<form method="POST" action="index.php?page=concerts&action=create">
+<form method="POST" action="index.php?page=concerts&action=add">
     <div class="form-group">
         <label for="idArtiste">Artiste</label>
         <select id="idArtiste" name="idArtiste" required>
@@ -37,7 +35,5 @@
         <input type="time" id="heureFin" name="heureFin" value="<?= htmlspecialchars($_POST['heureFin'] ?? '') ?>" required>
     </div>
     <button type="submit" class="btn btn-success">Ajouter</button>
-    <a href="index.php?page=concerts&action=index" class="btn btn-primary">Annuler</a>
+    <a href="index.php?page=concerts&action=list" class="btn btn-primary">Annuler</a>
 </form>
-
-<?php require __DIR__ . '/../layout/footer.php'; ?>

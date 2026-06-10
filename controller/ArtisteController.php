@@ -32,9 +32,20 @@ function addArtiste($pdo)
 
 function editArtiste($pdo, $id)
 {
+    $artistes = getAllArtiste($pdo);
     include __DIR__ . '/../view/layout/header.php';
     include __DIR__ . '/../view/Artistes/EditArtiste.php';
     include __DIR__ . '/../view/layout/footer.php';
+}
+
+function modifyArtiste($pdo)
+{
+    $nom = trim($_POST['nom']);
+    $style = trim($_POST['style']);
+    $pays = trim($_POST['pays']);
+    $id = trim($_POST['idArtiste']);
+    UpdateArtiste($pdo, $id, $nom, $style, $pays);
+    header('Location: index.php?page=artistes&action=index');
 }
 
 ?>

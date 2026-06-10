@@ -35,4 +35,20 @@ function getNameArtiste($pdo, $id)
     $stmt->execute([':idArtiste' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function UpdateArtiste($pdo, $id, $nom, $style, $pays)
+{
+    $sql = "UPDATE Artiste
+            SET nom = :nom,
+            styleMusical = :styleMusical,
+            pays = :pays
+            WHERE idArtiste = :idArtiste;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":styleMusical", $style);
+    $stmt->bindParam(":pays", $pays);
+    $stmt->bindParam(":idArtiste", $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 ?>

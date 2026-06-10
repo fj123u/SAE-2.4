@@ -25,6 +25,9 @@ switch ($page) {
             case 'edit':
                 editArtiste($pdo, $id);
                 break;
+            case 'modify':
+                modifyArtiste($pdo);
+                break;
         }
         break;
     case 'scenes':

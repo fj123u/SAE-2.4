@@ -1,74 +1,37 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-
-class Scenes {
-    private $pdo;
-
-    public function __construct() {
-        $this->pdo = getConnection();
-    }
-
-    public function getAll() {
-        $stmt = $this->pdo->query(
-            "SELECT s.*, COUNT(c.idConcert) AS nbConcerts
-             FROM Scene s
-             LEFT JOIN Concert c ON s.idScene = c.idScene
-             GROUP BY s.idScene
-             ORDER BY s.nomScene"
-        );
-        return $stmt->fetchAll();
-    }
-
-    public function getById($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM Scene WHERE idScene = :id");
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch();
-    }
-
-    public function create($nomScene, $capacite, $emplacement) {
-        $stmt = $this->pdo->prepare(
-            "INSERT INTO Scene (nomScene, capacite, emplacement) VALUES (:nomScene, :capacite, :emplacement)"
-        );
-        $stmt->execute([
-            'nomScene' => $nomScene,
-            'capacite' => $capacite,
-            'emplacement' => $emplacement
-        ]);
-    }
-
-    public function update($id, $nomScene, $capacite, $emplacement) {
-        $stmt = $this->pdo->prepare(
-            "UPDATE Scene SET nomScene = :nomScene, capacite = :capacite, emplacement = :emplacement WHERE idScene = :id"
-        );
-        $stmt->execute([
-            'id' => $id,
-            'nomScene' => $nomScene,
-            'capacite' => $capacite,
-            'emplacement' => $emplacement
-        ]);
-    }
-
-    public function delete($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM Scene WHERE idScene = :id");
-        $stmt->execute(['id' => $id]);
-    }
-
-    public function getConcerts($idScene) {
-        $stmt = $this->pdo->prepare(
-            "SELECT c.*, a.nom AS nomArtiste FROM Concert c
-             JOIN Artiste a ON c.idArtiste = a.idArtiste
-             WHERE c.idScene = :id ORDER BY c.date, c.heureDebut"
-        );
-        $stmt->execute(['id' => $idScene]);
-        return $stmt->fetchAll();
-    }
-}
-
 function getAllScene($pdo)
 {
     $sql = "SELECT * FROM scene ORDER BY idScene DESC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+function addScene($pdo, $nomScene, $capacite, $emplacement)
+{
+    $stmt = $pdo->prepare("INSERT INTO Scene (nomScene, capacite, emplacement) VALUES (:nomScene, :capacite, :emplacement)");
+    $stmt->bindParam(":nomScene", $nomScene);
+    $stmt->bindParam(":capacite", $capacite);
+    $stmt->bindParam(":emplacement", $emplacement);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function modifyScene($pdo, $nomScene, $capacite, $emplacement, $id)
+{
+    $stmt = $pdo->prepare("UPDATE Scene SET nomScene = :nomScene, capacite = :capacite, emplacement = :emplacement WHERE idScene = :idScene");
+    $stmt->bindParam(":nomScene", $nomScene);
+    $stmt->bindParam(":capacite", $capacite);
+    $stmt->bindParam(":emplacement", $emplacement);
+    $stmt->bindParam(":idScene", $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function deleteScene($pdo, $id)
+{
+    $stmt = $pdo->prepare("DELETE FROM concert WHERE idScene = :idScene; DELETE FROM Scene WHERE idScene = :idScene");
+    $stmt->bindParam(":idScene", $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function getNameScene($pdo, $id)
@@ -77,3 +40,4 @@ function getNameScene($pdo, $id)
     $stmt->execute([':idScene' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+?>

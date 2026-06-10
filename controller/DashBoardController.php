@@ -1,40 +1,14 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-
-class DashBoardController {
-    private $pdo;
-
-    public function __construct() {
-        $this->pdo = getConnection();
-    }
-
-    public function index() {
-        $stats = [];
-
-        $stmt = $this->pdo->query("SELECT COUNT(*) AS total FROM Concert");
-        $stats['nbConcerts'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query("SELECT COUNT(*) AS total FROM Artiste");
-        $stats['nbArtistes'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query("SELECT COUNT(*) AS total FROM Scene");
-        $stats['nbScenes'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query("SELECT COUNT(*) AS total FROM Benevole");
-        $stats['nbBenevoles'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query("SELECT COUNT(*) AS total FROM Billet WHERE statut IN ('payé','utilisé')");
-        $stats['nbBillets'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query("SELECT COALESCE(SUM(tarif),0) AS total FROM Billet WHERE statut IN ('payé','utilisé')");
-        $stats['chiffreAffaires'] = $stmt->fetch()['total'];
-
-        $stmt = $this->pdo->query(
-            "SELECT s.nomScene, COUNT(c.idConcert) AS nb FROM Scene s
-             LEFT JOIN Concert c ON s.idScene = c.idScene GROUP BY s.idScene"
-        );
-        $stats['concertsParScene'] = $stmt->fetchAll();
-
-        require __DIR__ . '/../view/layout/Dashboard.php';
-    }
+require_once __DIR__ . '/../model/Concert.php';
+require_once __DIR__ . '/../model/Artiste.php';
+require_once __DIR__ . '/../model/Scene.php';
+function showDashboard($pdo)
+{
+    $concerts = getAllConcert($pdo);
+    $artistes = getAllArtiste($pdo);
+    $scenes = getAllScene($pdo);
+    include __DIR__ . '/../view/layout/header.php';
+    include __DIR__ . '/../view/layout/Dashboard.php';
+    include __DIR__ . '/../view/layout/footer.php';
 }
+?>

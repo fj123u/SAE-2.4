@@ -1,32 +1,27 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
+<h1>Modifier la scène</h1>
+<?php foreach ($scenes as $scene)
+{
+    if ($scene["idScene"] == $id)
+    {
+        $nomScene = $scene["nomScene"];
+        $capacite = $scene["capacite"];
+        $emplacement = $scene["emplacement"];
+    }
+}?>
 
-<h1>Modifier la scène : <?= htmlspecialchars($scene['nomScene']) ?></h1>
-
-<?php if (!empty($errors)): ?>
-    <div class="alert alert-danger">
-        <ul>
-            <?php foreach ($errors as $err): ?>
-                <li><?= htmlspecialchars($err) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
-
-<form method="POST" action="index.php?page=scenes&action=edit&id=<?= $scene['idScene'] ?>">
-    <div class="form-group">
+<form method="post" action="index.php?page=scenes&action=update">
+    <input type="hidden" name="idScene" value="<?php echo $id; ?>">
+    <div>
         <label for="nomScene">Nom de la scène</label>
-        <input type="text" id="nomScene" name="nomScene" value="<?= htmlspecialchars($_POST['nomScene'] ?? $scene['nomScene']) ?>" required>
+        <input type="text" id="nomScene" name="nomScene" value="<?php echo htmlspecialchars($nomScene); ?>" required>
     </div>
-    <div class="form-group">
-        <label for="capacite">Capacité d'accueil</label>
-        <input type="number" id="capacite" name="capacite" min="1" value="<?= htmlspecialchars($_POST['capacite'] ?? $scene['capacite']) ?>" required>
+    <div>
+        <label for="capacite">Capacité</label>
+        <input type="number" id="capacite" name="capacite" min="1" value="<?php echo htmlspecialchars($capacite); ?>" required>
     </div>
-    <div class="form-group">
+    <div>
         <label for="emplacement">Emplacement</label>
-        <input type="text" id="emplacement" name="emplacement" value="<?= htmlspecialchars($_POST['emplacement'] ?? $scene['emplacement']) ?>" required>
+        <input type="text" id="emplacement" name="emplacement" value="<?php echo htmlspecialchars($emplacement); ?>" required>
     </div>
-    <button type="submit" class="btn btn-success">Enregistrer</button>
-    <a href="index.php?page=scenes&action=index" class="btn btn-primary">Annuler</a>
+    <button type="submit">Modifier</button>
 </form>
-
-<?php require __DIR__ . '/../layout/footer.php'; ?>

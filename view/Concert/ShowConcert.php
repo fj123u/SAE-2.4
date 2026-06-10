@@ -1,7 +1,5 @@
 <h1>Planning des concerts</h1>
-<a href="index.php?page=concerts&action=add">
-    Ajouter
-</a>
+<a href="index.php?page=concerts&action=add" class="btn btn-success">Ajouter</a>
 <table>
     <tr>
         <th>Id</th>

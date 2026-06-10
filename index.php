@@ -32,6 +32,30 @@ switch ($page) {
         break;
     case 'scenes':
         require_once 'controller/SceneController.php';
+        switch($action)
+        {
+            case 'index':
+                showSceneList($pdo);
+                break;
+            case 'create':
+                saveScene($pdo);
+                break;
+            case 'add':
+                showSceneForm($pdo);
+                break;
+            case 'edit':
+                updateScene($pdo);
+                break;
+            case 'modify':
+                showModifySceneForm($pdo, $id);
+                break;
+            case 'update':
+                updateScene($pdo);
+                break;
+            case 'delete':
+                removeScene($pdo, $id);
+                break;
+        }
         break;
     case 'concerts':
         require_once 'controller/ConcertController.php';
@@ -41,16 +65,13 @@ switch ($page) {
                 showConcertList($pdo);
                 break;
             case 'create':
-                showConcertList($pdo);
+                saveConcert($pdo);
                 break;
             case 'add':
                 showConcertForm($pdo);
                 break;
-            case 'edit':
-                showConcertList($pdo);
-                break;
             case 'modify':
-                showConcertList($pdo);
+                showModifyConcertForm($pdo, $id);
                 break;
             case 'update':
                 updateConcert($pdo);
@@ -63,6 +84,6 @@ switch ($page) {
     case 'dashboard':
     default:
         require_once 'controller/DashBoardController.php';
-        $action = 'index';
+        showDashboard($pdo);
         break;
 }

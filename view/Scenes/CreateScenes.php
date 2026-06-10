@@ -1,32 +1,21 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
-
 <h1>Ajouter une scène</h1>
-
-<?php if (!empty($errors)): ?>
-    <div class="alert alert-danger">
-        <ul>
-            <?php foreach ($errors as $err): ?>
-                <li><?= htmlspecialchars($err) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+<?php if (isset($error)): ?>
+    <p style="color: red;">
+        <?= htmlspecialchars($error) ?>
+    </p>
 <?php endif; ?>
-
-<form method="POST" action="index.php?page=scenes&action=create">
-    <div class="form-group">
+<form method="post" action="index.php?page=scenes&action=create">
+    <div>
         <label for="nomScene">Nom de la scène</label>
-        <input type="text" id="nomScene" name="nomScene" value="<?= htmlspecialchars($_POST['nomScene'] ?? '') ?>" required>
+        <input type="text" id="nomScene" name="nomScene" required>
     </div>
-    <div class="form-group">
-        <label for="capacite">Capacité d'accueil</label>
-        <input type="number" id="capacite" name="capacite" min="1" value="<?= htmlspecialchars($_POST['capacite'] ?? '') ?>" required>
+    <div>
+        <label for="capacite">Capacité</label>
+        <input type="number" id="capacite" name="capacite" min="1" required>
     </div>
-    <div class="form-group">
+    <div>
         <label for="emplacement">Emplacement</label>
-        <input type="text" id="emplacement" name="emplacement" value="<?= htmlspecialchars($_POST['emplacement'] ?? '') ?>" required>
+        <input type="text" id="emplacement" name="emplacement" required>
     </div>
-    <button type="submit" class="btn btn-success">Ajouter</button>
-    <a href="index.php?page=scenes&action=index" class="btn btn-primary">Annuler</a>
+    <button type="submit">Ajouter</button>
 </form>
-
-<?php require __DIR__ . '/../layout/footer.php'; ?>

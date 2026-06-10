@@ -1,67 +1,39 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-
-class Concert {
-    private $pdo;
-
-    public function __construct() {
-        $this->pdo = getConnection();
-    }
-
-    public function getAll() {
-        $stmt = $this->pdo->query(
-            "SELECT c.*, a.nom AS nomArtiste, s.nomScene
-             FROM Concert c
-             JOIN Artiste a ON c.idArtiste = a.idArtiste
-             JOIN Scene s ON c.idScene = s.idScene
-             ORDER BY c.date, c.heureDebut"
-        );
-        return $stmt->fetchAll();
-    }
-
-    public function getById($id) {
-        $stmt = $this->pdo->prepare(
-            "SELECT c.*, a.nom AS nomArtiste, s.nomScene
-             FROM Concert c
-             JOIN Artiste a ON c.idArtiste = a.idArtiste
-             JOIN Scene s ON c.idScene = s.idScene
-             WHERE c.idConcert = :id"
-        );
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch();
-    }
-
-    public function create($date, $heureDebut, $heureFin, $idArtiste, $idScene) {
-        $stmt = $this->pdo->prepare(
-            "INSERT INTO Concert (date, heureDebut, heureFin, idArtiste, idScene)
-             VALUES (:date, :heureDebut, :heureFin, :idArtiste, :idScene)"
-        );
-        $stmt->execute([
-            'date' => $date,
-            'heureDebut' => $heureDebut,
-            'heureFin' => $heureFin,
-            'idArtiste' => $idArtiste,
-            'idScene' => $idScene
-        ]);
-    }
-
-    public function update($id, $date, $heureDebut, $heureFin, $idArtiste, $idScene) {
-        $stmt = $this->pdo->prepare(
-            "UPDATE Concert SET date = :date, heureDebut = :heureDebut, heureFin = :heureFin,
-             idArtiste = :idArtiste, idScene = :idScene WHERE idConcert = :id"
-        );
-        $stmt->execute([
-            'id' => $id,
-            'date' => $date,
-            'heureDebut' => $heureDebut,
-            'heureFin' => $heureFin,
-            'idArtiste' => $idArtiste,
-            'idScene' => $idScene
-        ]);
-    }
-
-    public function delete($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM Concert WHERE idConcert = :id");
-        $stmt->execute(['id' => $id]);
-    }
+function getAllConcert($pdo)
+{
+    $sql = "SELECT * FROM concert ORDER BY id DESC";
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+function addConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
+{
+    $stmt = $pdo->prepare("INSERT INTO concert (date, heureDebut, heureFin, idArtiste, idScene) VALUES (:date, :heureDebut, :heureFin, :idArtiste, :idScene)");
+    $stmt->bindParam(":date", $date);
+    $stmt->bindParam(":heureDebut", $hDebut);
+    $stmt->bindParam(":heureFin", $hFin);
+    $stmt->bindParam(":idArtiste", $artiste);
+    $stmt->bindParam(":idScene", $scene);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
+{
+    $stmt = $pdo->prepare("UPDATE concert SET idArtiste = :idArtiste, idScene = :idScene, date = :date, heureDebut = :heureDebut, heureFin = :heureFin WHERE id = :id");
+    $stmt->bindParam(":idArtiste", $artiste);
+    $stmt->bindParam(":idScene", $scene);
+    $stmt->bindParam(":date", $date);
+    $stmt->bindParam(":heureDebut", $hDebut);
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":heureFin", $hFin);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function deleteConcert($pdo, $id)
+{
+    $stmt = $pdo->prepare("DELETE FROM Assiste WHERE id = :id; DELETE FROM concert WHERE id = :id");
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+?>

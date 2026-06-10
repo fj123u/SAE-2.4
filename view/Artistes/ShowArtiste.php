@@ -17,7 +17,7 @@
         $nom = $artiste["nom"];
         $style = $artiste["styleMusical"];
         $pays = $artiste["pays"];
-        echo ("<tr><th>" . $idArtiste . "</th><th>" . $nom . "</th><th>" . $style . "</th><th>" . $pays . "</th><th>" . "<a href='index.php?action=modify&id=" . $idArtiste . "'>Modifier</a></th><th>" . "<a href='index.php?action=delete&id=" . $idArtiste . "'>Supprimer</a></th></tr>");
+        echo ("<tr><th>" . $idArtiste . "</th><th>" . $nom . "</th><th>" . $style . "</th><th>" . $pays . "</th><th>" . "<a href='index.php?action=modify&id=" . $idArtiste . "'>Modifier</a></th><th>" . "<a href='index.php?page=artistes&action=delete&id=" . $idArtiste . "'>Supprimer</a></th></tr>");
     } ?>
 </table>    
 <html>

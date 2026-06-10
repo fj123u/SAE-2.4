@@ -10,6 +10,9 @@ function showConcertList($pdo)
 }
 function showConcertForm()
 {
+    $concerts = getAllConcert($pdo);
+    $artistes = getAllArtiste($pdo);
+    $scenes = getAllScene($pdo);
     include __DIR__ . '/../view/layout/header.php';
     include __DIR__ . '/../view/Concert/CreateConcert.php';
     include __DIR__ . '/../view/layout/footer.php';
@@ -28,8 +31,10 @@ function saveConcert($pdo)
 function showModifyConcertForm($pdo, $id)
 {
     $concerts = getAllConcert($pdo);
+    $artistes = getAllArtiste($pdo);
+    $scenes = getAllScene($pdo);
     include __DIR__ . '/../view/layout/header.php';
-    include __DIR__ . '/../view/livreModif.php';
+    include __DIR__ . '/../view/Concert/EditConcert.php';
     include __DIR__ . '/../view/layout/footer.php';
 }
 function updateConcert($pdo)

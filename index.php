@@ -24,17 +24,14 @@ switch ($page) {
             case 'list':
                 showConcertList($pdo);
                 break;
-            case 'create':
-                showConcertList($pdo);
-                break;
             case 'add':
                 showConcertForm($pdo);
                 break;
-            case 'edit':
-                showConcertList($pdo);
+            case 'create':
+                saveConcert($pdo);
                 break;
             case 'modify':
-                showConcertList($pdo);
+                showModifyConcertForm($pdo, $id);
                 break;
             case 'delete':
                 removeConcert($pdo, $id);

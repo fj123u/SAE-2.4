@@ -1,4 +1,9 @@
 <h1>Modifier le concert</h1>
+<?php if (isset($error)): ?>
+    <p style="color: red;">
+        <?= htmlspecialchars($error) ?>
+    </p>
+<?php endif; ?>
 <form method="POST" action="index.php?page=concerts&action=modify&id=<?= $concert['idConcert'] ?>">
     <div class="form-group">
         <label for="idArtiste">Artiste</label>

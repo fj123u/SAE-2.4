@@ -1,39 +1,43 @@
 <h1>Ajouter un concert</h1>
-<form method="POST" action="index.php?page=concerts&action=add">
-    <div class="form-group">
-        <label for="idArtiste">Artiste</label>
+<?php if (isset($error)): ?>
+    <p style="color: red;">
+        <?= htmlspecialchars($error) ?>
+    </p>
+<?php endif; ?>
+<form method="post" action="index.php?page=concerts&action=create">
+    <div>
+        <label for="artiste">Artiste</label>
         <select id="idArtiste" name="idArtiste" required>
-            <option value="">-- Sélectionner un artiste --</option>
-            <?php foreach ($artistes as $a): ?>
-                <option value="<?= $a['idArtiste'] ?>" <?= (isset($_POST['idArtiste']) && $_POST['idArtiste'] == $a['idArtiste']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($a['nom']) ?> (<?= htmlspecialchars($a['styleMusical']) ?>)
+            <option value="">Sélectionner un artiste</option>
+            <?php foreach ($artistes as $artiste): ?>
+                <option value="<?= $artiste['idArtiste'] ?>" <?= (isset($_POST['idArtiste']) && $_POST['idArtiste'] == $artiste['idArtiste']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($artiste['nom']) ?> (<?= htmlspecialchars($artiste['styleMusical']) ?>)
                 </option>
             <?php endforeach; ?>
         </select>
     </div>
-    <div class="form-group">
-        <label for="idScene">Scène</label>
+    <div>
+        <label for="scene">Scene</label>
         <select id="idScene" name="idScene" required>
-            <option value="">-- Sélectionner une scène --</option>
-            <?php foreach ($scenes as $s): ?>
-                <option value="<?= $s['idScene'] ?>" <?= (isset($_POST['idScene']) && $_POST['idScene'] == $s['idScene']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($s['nomScene']) ?> (<?= $s['capacite'] ?> places)
+        <option value="">Sélectionner une scène</option>
+            <?php foreach ($scenes as $scene): ?>
+                <option value="<?= $scene['idScene'] ?>" <?= (isset($_POST['idScene']) && $_POST['idScene'] == $scene['idScene']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($scene['nomScene']) ?> (<?= $scene['capacite'] ?> places)
                 </option>
             <?php endforeach; ?>
         </select>
     </div>
-    <div class="form-group">
+    <div>
         <label for="date">Date</label>
-        <input type="date" id="date" name="date" value="<?= htmlspecialchars($_POST['date'] ?? '') ?>" required>
+        <input type="date" id="date" name="date">
     </div>
-    <div class="form-group">
-        <label for="heureDebut">Heure de début</label>
-        <input type="time" id="heureDebut" name="heureDebut" value="<?= htmlspecialchars($_POST['heureDebut'] ?? '') ?>" required>
+    <div>
+        <label for="hDebut">Heure Début</label>
+        <input type="time" id="hDebut" name="hDebut">
     </div>
-    <div class="form-group">
-        <label for="heureFin">Heure de fin</label>
-        <input type="time" id="heureFin" name="heureFin" value="<?= htmlspecialchars($_POST['heureFin'] ?? '') ?>" required>
+    <div>
+        <label for="hFin">Heure Fin</label>
+        <input type="time" id="hFin" name="hFin">
     </div>
-    <button type="submit" class="btn btn-success">Ajouter</button>
-    <a href="index.php?page=concerts&action=list" class="btn btn-primary">Annuler</a>
+    <button type="submit">Ajouter</button>
 </form>

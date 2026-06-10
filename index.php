@@ -6,9 +6,11 @@ $action = $_GET['action'] ?? 'index';
 
 switch ($page) {
     case 'artistes':
+        require_once 'controller/ArtisteController.php';
         switch ($action)
         {
             case 'index':
+                showListArtiste($pdo);
         }
         break;
     case 'scenes':

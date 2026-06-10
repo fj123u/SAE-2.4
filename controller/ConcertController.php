@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/ArtistesModel.php';
+require_once __DIR__ . '/../models/Artiste.php';
 function showConcertList($pdo)
 {
     $concert = getAllConcert($pdo);

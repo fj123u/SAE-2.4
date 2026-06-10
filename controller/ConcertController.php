@@ -45,8 +45,8 @@ function updateConcert($pdo)
     $date = trim($_POST['date']);
     $hDebut = trim($_POST['hDebut']);
     $hFin = trim($_POST['hFin']);
-    $id = trim($_POST['id']);
-    modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin);
+    $id = trim($_POST['idConcert']);
+    modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin, $id);
     header('Location: index.php?page=concerts&action=list');
     exit();
 }

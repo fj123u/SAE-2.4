@@ -37,6 +37,9 @@ switch ($page) {
             case 'modify':
                 showModifyConcertForm($pdo, $id);
                 break;
+            case 'update':
+                updateConcert($pdo);
+                break;
             case 'delete':
                 removeConcert($pdo, $id);
                 break;

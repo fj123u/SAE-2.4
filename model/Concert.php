@@ -17,14 +17,14 @@ function addConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
+function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin, $id)
 {
-    $stmt = $pdo->prepare("UPDATE concert SET idArtiste = :idArtiste, idScene = :idScene, date = :date, heureDebut = :heureDebut, heureFin = :heureFin WHERE id = :id");
+    $stmt = $pdo->prepare("UPDATE concert SET idArtiste = :idArtiste, idScene = :idScene, date = :date, heureDebut = :heureDebut, heureFin = :heureFin WHERE idConcert = :idConcert");
     $stmt->bindParam(":idArtiste", $artiste);
     $stmt->bindParam(":idScene", $scene);
     $stmt->bindParam(":date", $date);
     $stmt->bindParam(":heureDebut", $hDebut);
-    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":idConcert", $id);
     $stmt->bindParam(":heureFin", $hFin);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);

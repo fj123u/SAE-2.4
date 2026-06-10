@@ -12,6 +12,10 @@ switch ($page) {
         {
             case 'index':
                 showListArtiste($pdo);
+                break;
+            case 'delete':
+                removeArtiste($pdo, $id);
+                break;
         }
         break;
     case 'scenes':

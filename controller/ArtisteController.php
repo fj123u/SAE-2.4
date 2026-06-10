@@ -8,4 +8,10 @@ function showListArtiste($pdo)
     include __DIR__ . '/../view/layout/footer.php';
 }
 
+function removeArtiste($pdo, $id)
+{
+    deleteArtiste($pdo, $id);
+    header('Location: index.php?page=artistes&action=index');
+}
+
 ?>

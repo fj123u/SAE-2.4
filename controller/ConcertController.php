@@ -1,17 +1,18 @@
 <?php
-require_once __DIR__ . '/../models/ArtistesModel.php';
+require_once __DIR__ . '/../model/Artiste.php';
+require_once __DIR__ . '/../model/Concert.php';
 function showConcertList($pdo)
 {
-    $concert = getAllConcert($pdo);
-    include __DIR__ . '/../views/layout/header.php';
-    include __DIR__ . '/../views/Concert/ShowConcert.php';
-    include __DIR__ . '/../views/layout/footer.php';
+    $concerts = getAllConcert($pdo);
+    include __DIR__ . '/../view/layout/header.php';
+    include __DIR__ . '/../view/Concert/ShowConcert.php';
+    include __DIR__ . '/../view/layout/footer.php';
 }
 function showConcertForm()
 {
-    include __DIR__ . '/../views/layout/header.php';
-    include __DIR__ . '/../views/Concert/CreateConcert.php';
-    include __DIR__ . '/../views/layout/footer.php';
+    include __DIR__ . '/../view/layout/header.php';
+    include __DIR__ . '/../view/Concert/CreateConcert.php';
+    include __DIR__ . '/../view/layout/footer.php';
 }
 function saveConcert($pdo)
 {
@@ -26,10 +27,10 @@ function saveConcert($pdo)
 }
 function showModifyConcertForm($pdo, $id)
 {
-    $concert = getAllConcert($pdo);
-    include __DIR__ . '/../views/layout/header.php';
-    include __DIR__ . '/../views/livreModif.php';
-    include __DIR__ . '/../views/layout/footer.php';
+    $concerts = getAllConcert($pdo);
+    include __DIR__ . '/../view/layout/header.php';
+    include __DIR__ . '/../view/livreModif.php';
+    include __DIR__ . '/../view/layout/footer.php';
 }
 function updateConcert($pdo)
 {

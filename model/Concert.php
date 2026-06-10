@@ -1,7 +1,7 @@
 <?php
 function getAllConcert($pdo)
 {
-    $sql = "SELECT * FROM concert ORDER BY id DESC";
+    $sql = "SELECT * FROM concert ORDER BY idConcert DESC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

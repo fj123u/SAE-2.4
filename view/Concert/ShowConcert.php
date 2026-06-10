@@ -1,50 +1,22 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
-
 <h1>Planning des concerts</h1>
-
-<?php if (isset($_GET['success'])): ?>
-    <div class="alert alert-success">
-        <?php if ($_GET['success'] == 1): ?>Concert ajouté avec succès.
-        <?php elseif ($_GET['success'] == 2): ?>Concert modifié avec succès.
-        <?php elseif ($_GET['success'] == 3): ?>Concert supprimé avec succès.
-        <?php endif; ?>
-    </div>
-<?php endif; ?>
-
-<?php if (isset($error)): ?>
-    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-<?php endif; ?>
-
-<a href="index.php?page=concerts&action=create" class="btn btn-success" style="margin-bottom:1rem;display:inline-block;">+ Ajouter un concert</a>
-
-<table>
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Début</th>
-            <th>Fin</th>
-            <th>Artiste</th>
-            <th>Scène</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($concerts as $c): ?>
-        <tr>
-            <td><?= $c['date'] ?></td>
-            <td><?= substr($c['heureDebut'], 0, 5) ?></td>
-            <td><?= substr($c['heureFin'], 0, 5) ?></td>
-            <td><?= htmlspecialchars($c['nomArtiste']) ?></td>
-            <td><?= htmlspecialchars($c['nomScene']) ?></td>
-            <td class="actions">
-                <a href="index.php?page=concerts&action=edit&id=<?= $c['idConcert'] ?>" class="btn btn-warning">Modifier</a>
-                <form method="POST" action="index.php?page=concerts&action=delete&id=<?= $c['idConcert'] ?>" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                </form>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
+<<table>
+    <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Annee</th>
+        <th>Genre</th>
+        <th>Resume</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+    </tr>
+    <?php foreach ($concerts as $concert) {
+        $idArtiste = $concert["idArtiste"];
+        $idScene = $concert["idScene"];
+        $date = $concert["date"];
+        $id = $concert["id"];
+        $hDebut = $concert["heureDebut"];
+        $hFin = $concert["heureFin"];
+        echo ("<tr><th>" . $id . "</th><th>" . $idArtiste . "</th><th>" . $idScene . "</th><th>" . $date . "</th><th>" . $hDebut . "</th><th>" . $hFin . "</th><th>" . "<a href='index.php?action=modify&id=" . $id . "'>Modifier</a></th><th>" . "<a href='index.php?action=delete&id=" . $id . "'>Supprimer</a></th></tr>");
+    } ?>
 </table>
-
-<?php require __DIR__ . '/../layout/footer.php'; ?>

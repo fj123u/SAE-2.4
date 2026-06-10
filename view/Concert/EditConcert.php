@@ -37,15 +37,15 @@
     </div>
     <div>
         <label for="date">Date</label>
-        <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($date); ?>">
+        <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($date); ?>" required>
     </div>
     <div>
         <label for="hDebut">Heure Début</label>
-        <input type="time" id="hDebut" name="hDebut" value="<?php echo htmlspecialchars($hDebut); ?>">
+        <input type="time" id="hDebut" name="hDebut" value="<?php echo htmlspecialchars($hDebut); ?>" required>
     </div>
     <div>
         <label for="hFin">Heure Fin</label>
-        <input type="time" id="hFin" name="hFin" value="<?php echo htmlspecialchars($hFin); ?>">
+        <input type="time" id="hFin" name="hFin" value="<?php echo htmlspecialchars($hFin); ?>" required>
     </div>
     <button type="submit">Modifier</button>
 </form>

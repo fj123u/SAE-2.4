@@ -29,15 +29,15 @@
     </div>
     <div>
         <label for="date">Date</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" required>
     </div>
     <div>
         <label for="hDebut">Heure Début</label>
-        <input type="time" id="hDebut" name="hDebut">
+        <input type="time" id="hDebut" name="hDebut" required>
     </div>
     <div>
         <label for="hFin">Heure Fin</label>
-        <input type="time" id="hFin" name="hFin">
+        <input type="time" id="hFin" name="hFin" required>
     </div>
     <button type="submit">Ajouter</button>
 </form>

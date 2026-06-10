@@ -13,6 +13,12 @@ switch ($page) {
         break;
     case 'concerts':
         require_once 'controller/ConcertController.php';
+        switch($action)
+        {
+            case 'list':
+                showConcertList($pdo);
+                break;
+        }
         break;
     case 'dashboard':
     default:

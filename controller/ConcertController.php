@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../models/ArtistesModel.php';
 function showConcertList($pdo)
 {
-    $tasks = getAllConcert($pdo);
+    $concert = getAllConcert($pdo);
     include __DIR__ . '/../views/layout/header.php';
     include __DIR__ . '/../views/Concert/ShowConcert.php';
     include __DIR__ . '/../views/layout/footer.php';
@@ -26,7 +26,7 @@ function saveConcert($pdo)
 }
 function showModifyConcertForm($pdo, $id)
 {
-    $tasks = getAllConcert($pdo);
+    $concert = getAllConcert($pdo);
     include __DIR__ . '/../views/layout/header.php';
     include __DIR__ . '/../views/livreModif.php';
     include __DIR__ . '/../views/layout/footer.php';

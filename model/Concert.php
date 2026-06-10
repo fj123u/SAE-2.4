@@ -2,6 +2,7 @@
 function getAllConcert($pdo)
 {
     $sql = "SELECT * FROM concert ORDER BY id DESC";
+    $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 function addConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)

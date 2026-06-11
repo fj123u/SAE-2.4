@@ -3,6 +3,7 @@ require_once __DIR__ . '/../model/Artiste.php';
 require_once __DIR__ . '/../model/Concert.php';
 require_once __DIR__ . '/../model/Scene.php';
 
+// Affiche la liste des concerts
 function showConcertList($pdo)
 {
     try {
@@ -18,6 +19,7 @@ function showConcertList($pdo)
     }
 }
 
+// Affiche le formulaire d'ajout d'un concert
 function showConcertForm($pdo)
 {
     try {
@@ -35,6 +37,7 @@ function showConcertForm($pdo)
     }
 }
 
+// Enregistre un nouveau concert en base de données
 function saveConcert($pdo)
 {
     try {
@@ -54,6 +57,7 @@ function saveConcert($pdo)
     }
 }
 
+// Affiche le formulaire de modification d'un concert
 function showModifyConcertForm($pdo, $id)
 {
     try {
@@ -71,6 +75,7 @@ function showModifyConcertForm($pdo, $id)
     }
 }
 
+// Modifie un concert en base de données
 function updateConcert($pdo)
 {
     try {
@@ -91,6 +96,7 @@ function updateConcert($pdo)
     }
 }
 
+// Supprime un concert
 function removeConcert($pdo, $id)
 {
     try {

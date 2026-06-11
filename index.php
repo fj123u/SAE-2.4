@@ -82,6 +82,9 @@ switch ($page) {
         }
         break;
     case 'dashboard':
+        require_once 'controller/DashBoardController.php';
+        showDashboard($pdo);
+        break;
     case 'planning':
         require_once 'controller/planningController.php';
         showPlanning($pdo);

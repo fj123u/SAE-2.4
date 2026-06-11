@@ -17,5 +17,4 @@ function getAllInfos($pdo)
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
 ?>

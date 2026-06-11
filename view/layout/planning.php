@@ -17,6 +17,6 @@
     $style = $info["styleMusical"];
     $nomScene = $info["nomScene"];
     $emplacement = $info["emplacement"];
-    echo ("<tr><th>" . $date . "</th><th>" . $nom . "</th><th>" . $nomScene . "</th><th>" . $emplacement . "</th><th>" . $style . "</th><th>" . $hDebut . "</th><th>" . $hFin . "</th></tr>");
+    echo ("<tr><td>" . $date . "</td><td>" . $nom . "</td><td>" . $nomScene . "</td><td>" . $emplacement . "</td><td>" . $style . "</td><td>" . $hDebut . "</td><td>" . $hFin . "</td></tr>");
 } ?>
 </table>

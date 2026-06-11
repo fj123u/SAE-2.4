@@ -14,6 +14,6 @@
         $nomScene = $scene["nomScene"];
         $capacite = $scene["capacite"];
         $emplacement = $scene["emplacement"];
-        echo ("<tr><th>" . $id . "</th><th>" . $nomScene . "</th><th>" . $capacite . "</th><th>" . $emplacement . "</th><th>" . "<a href='index.php?page=scenes&action=modify&id=" . $id . "'>Modifier</a></th><th>" . "<a href='index.php?page=scenes&action=delete&id=" . $id . "'>Supprimer</a></th></tr>");
+        echo ("<tr><td>" . $id . "</td><td>" . $nomScene . "</td><td>" . $capacite . "</td><td>" . $emplacement . "</td><td>" . "<a href='index.php?page=scenes&action=modify&id=" . $id . "' class='btn btn-warning'>Modifier</a></td><td>" . "<a href='index.php?page=scenes&action=delete&id=" . $id . "' class='btn btn-danger'>Supprimer</a></td></tr>");
     } ?>
 </table>

@@ -1,7 +1,7 @@
 <?php 
 function createViewPlanning($pdo)
 {
-    $sql = "CREATE VIEW planing_festival AS
+    $sql = "CREATE VIEW IF NOT EXISTS planing_festival AS
             SELECT Concert.date, Concert.heureDebut, Concert.heureFin, Artiste.nom, Artiste.styleMusical, Scene.nomScene, Scene.emplacement
             FROM Concert
             JOIN Artiste ON Artiste.idArtiste = Concert.idArtiste
@@ -13,7 +13,7 @@ function createViewPlanning($pdo)
 
 function getAllInfos($pdo)
 {
-    $sql = "SELECT * FROM planing;";
+    $sql = "SELECT * FROM planing_festival;";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

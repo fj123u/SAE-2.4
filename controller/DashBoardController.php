@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../model/Concert.php';
 require_once __DIR__ . '/../model/Artiste.php';
 require_once __DIR__ . '/../model/Scene.php';
-// Affiche le tableau de bord
 function showDashboard($pdo)
 {
     try {

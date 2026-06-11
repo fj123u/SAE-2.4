@@ -18,6 +18,6 @@
         $id = $concert["idConcert"];
         $hDebut = $concert["heureDebut"];
         $hFin = $concert["heureFin"];
-        echo ("<tr><th>" . $id . "</th><th>" . $artiste . "</th><th>" . $scene . "</th><th>" . $date . "</th><th>" . $hDebut . "</th><th>" . $hFin . "</th><th>" . "<a href='index.php?page=concerts&action=modify&id=" . $id . "'>Modifier</a></th><th>" . "<a href='index.php?page=concerts&action=delete&id=" . $id . "'>Supprimer</a></th></tr>");
+        echo ("<tr><td>" . $id . "</td><td>" . $artiste . "</td><td>" . $scene . "</td><td>" . $date . "</td><td>" . $hDebut . "</td><td>" . $hFin . "</td><td>" . "<a href='index.php?page=concerts&action=modify&id=" . $id . "' class='btn btn-warning'>Modifier</a></td><td>" . "<a href='index.php?page=concerts&action=delete&id=" . $id . "' class='btn btn-danger'>Supprimer</a></td></tr>");
     } ?>
 </table>

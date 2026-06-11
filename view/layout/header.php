@@ -15,6 +15,7 @@
             <li><a href="index.php?page=artistes&action=index">Artistes</a></li>
             <li><a href="index.php?page=scenes&action=index">Scènes</a></li>
             <li><a href="index.php?page=concerts&action=list">Concerts</a></li>
+            <li><a href="index.php?page=planning&action=index">Planning</a></li>
         </ul>
     </nav>
 </header>

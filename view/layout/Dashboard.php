@@ -7,9 +7,9 @@
     </tr>
     <tr>
         <?php foreach ($stats as $stat) {?>
-            <th><?php echo $stat["nbBilletsVendus"]; ?></th>
-            <th><?php echo $stat["chiffreAffaires"]; ?></th>
-            <th><?php echo $stat["nbConcerts"]; ?></th>
+            <td><?php echo $stat["nbBilletsVendus"]; ?></td>
+            <td><?php echo $stat["chiffreAffaires"]; ?></td>
+            <td><?php echo $stat["nbConcerts"]; ?></td>
         <?php }?>
     </tr>
 </table>
@@ -20,8 +20,8 @@
     </tr>
     <?php foreach ($concertScene as $conc) {?>
         <tr>
-        <th><?php echo $conc["nomScene"]; ?></th>
-        <th><?php echo $conc["nbConcert"]; ?></th>
+            <td><?php echo $conc["nomScene"]; ?></td>
+            <td><?php echo $conc["nbConcert"]; ?></td>
         </tr>
     <?php }?> 
 </table>

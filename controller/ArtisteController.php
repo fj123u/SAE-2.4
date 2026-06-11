@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../model/Artiste.php';
-// Affiche la liste des artistes
 function showListArtiste($pdo)
 {
     try {
@@ -16,7 +15,6 @@ function showListArtiste($pdo)
     }
 }
 
-// Supprime un artiste
 function removeArtiste($pdo, $id)
 {
     try {
@@ -31,7 +29,6 @@ function removeArtiste($pdo, $id)
     }
 }
 
-// Affiche le formulaire de création d'un artiste
 function createArtiste($pdo)
 {
     include __DIR__ . '/../view/layout/header.php';
@@ -39,7 +36,6 @@ function createArtiste($pdo)
     include __DIR__ . '/../view/layout/footer.php';
 }
 
-// Ajoute un artiste en base de données
 function addArtiste($pdo)
 {
     try {
@@ -57,7 +53,6 @@ function addArtiste($pdo)
     }
 }
 
-// Affiche le formulaire de modification d'un artiste
 function editArtiste($pdo, $id)
 {
     try {
@@ -73,7 +68,6 @@ function editArtiste($pdo, $id)
     }
 }
 
-// Modifie un artiste en base de données
 function modifyArtiste($pdo)
 {
     try {

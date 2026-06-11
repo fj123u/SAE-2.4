@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../model/Scene.php';
-// Affiche la liste des scènes
 function showSceneList($pdo)
 {
     try {
@@ -16,7 +15,6 @@ function showSceneList($pdo)
     }
 }
 
-// Affiche le formulaire d'ajout d'une scène
 function showSceneForm($pdo)
 {
     try {
@@ -32,7 +30,6 @@ function showSceneForm($pdo)
     }
 }
 
-// Enregistre une nouvelle scène en base de données
 function saveScene($pdo)
 {
     try {
@@ -50,7 +47,6 @@ function saveScene($pdo)
     }
 }
 
-// Affiche le formulaire de modification d'une scène
 function showModifySceneForm($pdo, $id)
 {
     try {
@@ -66,7 +62,6 @@ function showModifySceneForm($pdo, $id)
     }
 }
 
-// Modifie une scène en base de données
 function updateScene($pdo)
 {
     try {
@@ -85,7 +80,6 @@ function updateScene($pdo)
     }
 }
 
-// Supprime une scène
 function removeScene($pdo, $id)
 {
     try {

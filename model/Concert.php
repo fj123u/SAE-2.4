@@ -1,10 +1,12 @@
 <?php
+// Récupère tous les concerts
 function getAllConcert($pdo)
 {
     $sql = "SELECT * FROM concert ORDER BY idConcert DESC";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+// Ajoute un concert
 function addConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
 {
     $stmt = $pdo->prepare("INSERT INTO concert (date, heureDebut, heureFin, idArtiste, idScene) VALUES (:date, :heureDebut, :heureFin, :idArtiste, :idScene)");
@@ -17,6 +19,7 @@ function addConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Met à jour un concert
 function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin, $id)
 {
     $stmt = $pdo->prepare("UPDATE concert SET idArtiste = :idArtiste, idScene = :idScene, date = :date, heureDebut = :heureDebut, heureFin = :heureFin WHERE idConcert = :idConcert");
@@ -30,6 +33,7 @@ function modifyConcert($pdo, $artiste, $scene, $date, $hDebut, $hFin, $id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Supprime un concert
 function deleteConcert($pdo, $id)
 {
     $stmt = $pdo->prepare("DELETE FROM Assiste WHERE idConcert = :idConcert; DELETE FROM concert WHERE idConcert = :idConcert");
